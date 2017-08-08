@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>User Info</title>
+        <link href="script/skin/style.css" type="text/css" rel="Stylesheet" />
+        <script type="text/javascript" src="script/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script type="text/javascript" src="script/popup.js"></script>
+	<link rel="stylesheet" href="style/bootstrap.min.css"/>
+	<script type="text/javascript" src="script/bootstrap.min.js"></script>
+    </h:head>
+    <h:body style="padding-top: 50px">
+        
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2"></div>
+                        
+			<div class="col-sm-8">
+                            <h:form class="form-horizontal">
+                                    <div class="form-group" style="text-align: center">
+                                            <h2>Personal Information</h2>
+					</div>
+					<div class="form-group">
+						<label for="it_firstName" class="col-sm-2 control-label">FirstName</label>
+						<div class="col-sm-9" id="firstName">
+                                                    <h:outputLabel value='#{session.getAttribute("user").firstName}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="it_lastName" class="col-sm-2 control-label">LastName</label>
+						<div class="col-sm-9">
+
+                                                    <h:outputLabel value='#{session.getAttribute("user").lastName}' class="form-control"></h:outputLabel>
+						</div>
+
+					</div>
+                                        <div class="form-group">
+						<label for="it_email" class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-9">
+                                                   
+                                                    <h:outputLabel value='#{session.getAttribute("user").email}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="password" class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-9">
+                                                    
+                                                    <h:outputLabel value='#{session.getAttribute("user").password}'    class="form-control"></h:outputLabel>
+						<span id="span_confirmPassword" style="color:green">(*MD5 code)</span>
+                                                </div>
+					</div>
+
+					<div class="form-group">
+						<label for="inlineRadio1" class="col-sm-2 control-label">Address</label>
+						<div class="col-sm-9">
+                                                    
+                                                    <h:outputLabel value='#{session.getAttribute("user").address}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+					  <div class="form-group">
+						<label for="phone" class="col-sm-2 control-label">Phone</label>
+						<div class="col-sm-9">
+                                                    <h:outputLabel value='#{session.getAttribute("user").phoneNumber}' class="form-control"></h:outputLabel>
+                                                    
+						</div>
+					</div>
+                                         <div class="form-group">
+						<label for="it_userType" class="col-sm-2 control-label">UserType</label>
+						<div class="col-sm-9">
+                                                    
+                                                    <h:outputLabel value='#{session.getAttribute("user").type}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+					
+                                
+				</h:form>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+	</div>
+        
+    </h:body>
+</html>
+

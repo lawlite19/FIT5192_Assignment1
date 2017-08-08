@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Book Management</title>
+        <link href="style/blue/login.css" type="text/css" rel="stylesheet"></link>
+        <script type="text/javascript" src="script/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style/c.css" />
+        <link rel="stylesheet" type="text/css" href="style/baseSE.css" />
+    </h:head>
+    <h:body style="margin:10px 10px 10px 50px; padding: 10px;">
+        <!-- 查找-->
+        <h:form>
+        <table width="99%" align="center" cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                    <td class="tl"></td>
+                    <td class="tr"></td>
+                </tr>
+                <tr>
+                    <td class="mm" colspan="3">
+<table align="left" cellspacing="1" cellpadding="1">
+     <tbody><tr>
+               <td>
+                                     Title：
+				</td>
+               <td>
+                   <h:inputText id="it_titile" class="ddl" value="#{bookManagedBean.title}"></h:inputText>
+               </td>
+               <td>
+                                      Author：
+   			   </td>
+               <td>
+                   <h:inputText id="it_author" class="ddl" value="#{bookManagedBean.author}"></h:inputText>
+               </td>
+             <td>
+                                      CallNumber：
+   			   </td>
+               <td>
+                   <h:inputText id="it_callNumber" class="ddl" value="#{bookManagedBean.callNumber}"></h:inputText>
+               </td>
+             <td>
+                                      ISBN：
+   			   </td>
+               <td>
+                   <h:inputText id="it_isbn" class="ddl" value="#{bookManagedBean.isbn}"></h:inputText>
+               </td>
+               <td>
+               </td> 
+             <td>
+                                      type：
+   			   </td>
+               <td>
+                   <h:selectOneListbox id="it_type" class="ddl" value="#{bookManagedBean.type}">
+                                                    <f:selectItem itemValue="General" itemLabel="General" />
+                                                    <f:selectItem itemValue="Reserve" itemLabel="Reserve" />                   
+                   </h:selectOneListbox>
+               </td>
+               <td colspan="4" align="center">
+                   <h:commandButton class="ttn" value="Search" action="#{bookManagedBean.searchByMultiCondition()}"></h:commandButton>
+		</td>
+             <!-- 添加按钮 -->
+             <td colspan="4" align="center">
+                 <c:if test='#{session.getAttribute("user").type=="Librarian"}'>
+                   <h:commandButton class="ttn" value="Add" action="#{bookManagedBean.addUI()}"></h:commandButton>
+                 </c:if>
+              </td>
+        </tr> 
+    </tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+            </h:form>  
+        
+<h:dataTable value="#{bookManagedBean.books}" var="varBook"
+   styleClass="grid"
+   headerClass="gridHead"
+   rowClasses="tdbg,tdbg-dark" style="text-align: center">
+   <h:column>
+      <f:facet name="header">Thumbnail</f:facet>
+      <img src="#{varBook.thumbnail}" height="100px" width="100px"></img>
+   </h:column>
+   <h:column>
+      <f:facet name="header">Title</f:facet>
+      #{varBook.title}
+   </h:column>
+   <h:column>
+      <f:facet name="header">Author</f:facet>
+      #{varBook.author}
+   </h:column>
+   <h:column>
+      <f:facet name="header">CallNumber</f:facet>
+      #{varBook.callNumber}
+   </h:column>
+    <h:column>
+      <f:facet name="header">Operation</f:facet>
+
+<h:form>
+        <h:commandLink action="#{bookManagedBean.detailUI()}" value="detail">
+              <f:param name="book_id" value="#{varBook.id}"></f:param> 
+        </h:commandLink>
+
+    <c:if test='#{session.getAttribute("user").type=="Librarian"}'>
+          &nbsp;|&nbsp;
+          <h:commandLink action="#{bookManagedBean.deleteBook()}" value="delete">
+              <f:param name="book_id" value="#{varBook.id}"></f:param> 
+          </h:commandLink>
+          &nbsp;|&nbsp;
+          <h:commandLink action="#{bookManagedBean.editUI()}" value="edit">
+              <f:param name="book_id" value="#{varBook.id}"></f:param> 
+          </h:commandLink>
+    </c:if>
+
+<c:if test='#{session.getAttribute("user").type=="Member"}'>
+          
+          <h:commandLink action="#{loanManagedBean.borrowBook()}" value="&nbsp;|&nbsp;borrow" rendered='#{varBook.type=="General"}'>
+              <f:param name="book_id" value="#{varBook.id}"></f:param> 
+          </h:commandLink>
+          <h:outputText style="color:red" value="&nbsp;|&nbsp;Can't Borrow" rendered="#{varBook.type eq 'Reserve'}" /> 
+</c:if>
+</h:form>
+
+   </h:column>
+</h:dataTable>
+    </h:body>
+</html>
+

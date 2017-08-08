@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+        <link href="style/blue/login.css" type="text/css" rel="stylesheet"></link>
+        <script type="text/javascript" src="script/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style/c.css" />
+        <link rel="stylesheet" type="text/css" href="style/baseSE.css" />
+    </h:head>
+    <h:body style="margin:10px 10px 10px 50px; padding: 10px;">
+        <!-- 查找-->
+        <h:form>
+        <table width="99%" align="center" cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                    <td class="tl"></td>
+                    <td class="tr"></td>
+                </tr>
+                <tr>
+                    <td class="mm" colspan="3">
+<table align="left" cellspacing="1" cellpadding="1">
+     <tbody><tr>
+               <td>
+                                     Title：
+				</td>
+               <td>
+                   <h:inputText id="it_titile" class="ddl" value="#{bookManagedBean.searchCondition}"></h:inputText>
+               </td>
+               <td colspan="4" align="center">
+                   <h:commandButton class="ttn" value="Search" action="#{bookManagedBean.apiSearch()}"></h:commandButton>
+		</td>
+
+        </tr> 
+    </tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+            </h:form>
+<!--显示搜索的结果-->
+<h:dataTable value="#{bookManagedBean.books_find}" var="varBook"
+   styleClass="grid"
+   headerClass="gridHead"
+   rowClasses="tdbg,tdbg-dark" style="text-align: center">
+   <h:column>
+      <f:facet name="header">ISBN</f:facet>
+      #{varBook.isbn}
+   </h:column>
+   <h:column>
+      <f:facet name="header">Thumbnail</f:facet>
+      <img src="#{varBook.thumbnail}" height="100px" width="100px"></img>
+   </h:column>
+   <h:column>
+      <f:facet name="header">Title</f:facet>
+      #{varBook.title}
+   </h:column>
+   <h:column>
+      <f:facet name="header">Author</f:facet>
+      #{varBook.author}
+   </h:column>
+   <h:column>
+      <f:facet name="header">CallNumber</f:facet>
+      #{varBook.callNumber}
+   </h:column>
+   <h:column>
+      <f:facet name="header">Publisher</f:facet>
+      #{varBook.publisher}
+   </h:column>
+    <h:column>
+      <f:facet name="header">Operation</f:facet>
+<h:form>
+    <h:commandLink action="#{bookManagedBean.aipAddBook(varBook)}" value="Add to Library">
+            <f:param name="book_model" value="#{varBook}"></f:param> 
+    </h:commandLink>
+</h:form>
+
+   </h:column>
+</h:dataTable>
+
+<div class="mframe">
+
+	<table width="91.8%" align="center" cellspacing="0" cellpadding="0">
+          <tbody>
+          	<tr>
+                    <td class="tl"></td>
+                    <td class="tm">
+                        <span class="tt">Book Info</span>
+                    </td>
+                    <td class="tr"></td>
+            </tr>
+            <tr>
+                <td class="tm">
+                        
+                    </td>
+                    <td class="mm">
+                    <div>
+                        <h:form>
+<table cellspacing="0" cellpadding="6"  align="center" border="0">
+		<!-- 表头-->
+		<tbody> 
+			<tr>
+                    	<td class="addFont">ISBN</td>
+                        <td>
+                            <h:inputText value="#{bookManagedBean.book.isbn}" class="ddl"></h:inputText>
+                            <span class="span_note"> * </span>
+                        </td>
+                    </tr>
+                    <tr><td class="addFont">CallNumber</td>
+                        <td>
+                            <h:inputText value="#{bookManagedBean.book.callNumber}" class="ddl"></h:inputText>
+                         <span class="span_note"> * </span>
+                         </td>
+                    </tr>
+                    
+                    <tr><td class="addFont">Title</td>
+                        <td><h:inputText value="#{bookManagedBean.book.title}" class="ddl"></h:inputText>
+							<span class="span_note"> </span></td>
+                    </tr>
+                    <tr><td class="addFont">Author</td>
+                        <td>
+                            <h:inputText value="#{bookManagedBean.book.author}" class="ddl"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr><td class="addFont">Publisher</td>
+                        <td>
+                            <h:inputText value="#{bookManagedBean.book.publisher}" class="ddl"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr><td class="addFont">Type</td>
+                        <td>
+                    <h:selectOneListbox id="it_type" class="ddl" value="#{bookManagedBean.book.type}">
+                                                    <f:selectItem itemValue="General" itemLabel="General" />
+                                                    <f:selectItem itemValue="Reserve" itemLabel="Reserve" />                   
+                   </h:selectOneListbox>
+                        </td>
+                    </tr>
+                    <tr><td class="addFont">Thumbnail</td>
+                        <td>
+                    <h:inputText value="#{bookManagedBean.book.thumbnail}" class="ddl"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr><td class="addFont">Description</td>
+                        <td>
+                    <h:inputText value="#{bookManagedBean.book.description}" class="ddl"></h:inputText>
+                        </td>
+                    </tr>
+                    
+                    <tr><td class="addFont">PreviewUrl</td>
+                        <td>
+                    <h:inputText value="#{bookManagedBean.book.previewUrl}" class="ddl"></h:inputText>
+                        </td>
+                    </tr>
+                    <tr><td class="addFont">Description</td>
+                        <td>
+                            <h:inputTextarea value="#{bookManagedBean.book.description}" class="ddl" ></h:inputTextarea>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td>
+                    		
+                    	</td>
+                        <td>
+                        	
+                                <h:commandButton class="ttn" value="Submit" action="#{bookManagedBean.add()}"></h:commandButton>
+                        	&nbsp;&nbsp;&nbsp;
+                        	<input type="button" class="ttn" onclick="javascript:history.go(-1);" value="Back" />
+                        </td>
+                    </tr>
+		</tbody>
+	</table>
+		
+    	
+</h:form>
+	</div>
+	</td>
+	</tr>
+	</tbody>
+     </table>
+</div>
+    </h:body>
+</html>
+

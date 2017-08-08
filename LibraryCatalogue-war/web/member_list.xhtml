@@ -1,0 +1,106 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Member Management</title>
+        <link href="style/blue/login.css" type="text/css" rel="stylesheet"></link>
+        <script type="text/javascript" src="script/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style/c.css" />
+        <link rel="stylesheet" type="text/css" href="style/baseSE.css" />
+    </h:head>
+    <h:body style="margin:10px 10px 10px 50px; padding: 10px;">
+        <!-- 查找-->
+        <h:form>
+        <table width="99%" align="center" cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                    <td class="tl"></td>
+                    <td class="tr"></td>
+                </tr>
+                <tr>
+                    <td class="mm" colspan="3">
+<table align="left" cellspacing="1" cellpadding="1">
+     <tbody><tr>
+               <td>
+                                     ID：
+				</td>
+               <td>
+                   <h:inputText id="it_titile" class="ddl" value="#{memberManagedBean.id}"></h:inputText>
+               </td>
+               <td>
+                                      LastName：
+   			   </td>
+               <td>
+                   <h:inputText id="it_author" class="ddl" value="#{memberManagedBean.lastName}"></h:inputText>
+               </td>
+             <td>
+                                      FirstName：
+   			   </td>
+               <td>
+                   <h:inputText id="it_callNumber" class="ddl" value="#{memberManagedBean.firstName}"></h:inputText>
+               </td>
+             <td>
+                                      Email：
+   			   </td>
+               <td>
+                   <h:inputText id="it_isbn" class="ddl" value="#{memberManagedBean.email}"></h:inputText>
+               </td>
+               <td>
+               </td> 
+               <td colspan="4" align="center">
+                   <h:commandButton class="ttn" value="Search" action="#{memberManagedBean.searchByMultiCondition()}"></h:commandButton>
+		</td>
+             <!-- 添加按钮 -->
+             <td colspan="4" align="center">
+                   <h:commandButton class="ttn" value="Add" action="#{memberManagedBean.addUI()}"></h:commandButton>
+              </td>
+        </tr> 
+    </tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+            </h:form>
+
+<h:dataTable value="#{memberManagedBean.users}" var="user"
+   styleClass="grid"
+   headerClass="gridHead"
+   rowClasses="tdbg,tdbg-dark" style="text-align: center">
+   <h:column>
+      <f:facet name="header">ID</f:facet>
+      #{user.id}
+   </h:column>
+   <h:column>
+      <f:facet name="header">Last Name</f:facet>
+      #{user.lastName}
+   </h:column>
+   <h:column>
+      <f:facet name="header">First Name</f:facet>
+      #{user.firstName}
+   </h:column>
+   <h:column>
+      <f:facet name="header">Email</f:facet>
+      #{user.email}
+   </h:column>
+    <h:column>
+      <f:facet name="header">Operation</f:facet>
+      <h:form>
+          <h:commandLink action="#{memberManagedBean.detailUI()}" value="detail">
+              <f:param name="user_id" value="#{user.id}"></f:param> 
+        </h:commandLink>
+          &nbsp; | &nbsp;
+          <h:commandLink action="#{memberManagedBean.delete()}" value="delete">
+              <f:param name="user_id" value="#{user.id}"></f:param> 
+        </h:commandLink>
+          &nbsp; | &nbsp;
+          <h:commandLink action="#{memberManagedBean.editUI()}" value="edit">
+              <f:param name="user_id" value="#{user.id}"></f:param> 
+        </h:commandLink>
+      </h:form>
+   </h:column>
+</h:dataTable>
+    </h:body>
+</html>
+

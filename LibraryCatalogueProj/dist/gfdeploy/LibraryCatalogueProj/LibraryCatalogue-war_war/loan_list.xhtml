@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>My Loan Management</title>
+        <link href="style/blue/login.css" type="text/css" rel="stylesheet"></link>
+        <script type="text/javascript" src="script/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style/c.css" />
+        <link rel="stylesheet" type="text/css" href="style/baseSE.css" />
+    </h:head>
+    <h:body style="margin:10px 10px 10px 50px; padding: 10px;">
+        <!-- 查找-->
+        <c:if test='#{session.getAttribute("user").type == "Librarian"}'>
+        <h:form>
+        <table width="99%" align="center" cellspacing="0" cellpadding="0">
+                <tbody><tr>
+                    <td class="tl"></td>
+                    <td class="tr"></td>
+                </tr>
+                <tr>
+                    <td class="mm" colspan="3">
+<table align="left" cellspacing="1" cellpadding="1">
+     <tbody><tr>
+               <td>
+                                     Loan ID：
+				</td>
+               <td>
+                   <h:inputText id="it_loanId" class="ddl" value="#{loanManagedBean.loanId}"></h:inputText>
+               </td>
+               <td>
+                                      User FirstName：
+   			   </td>
+               <td>
+                   <h:inputText id="it_firstName" class="ddl" value="#{loanManagedBean.userFirstName}"></h:inputText>
+               </td>
+             <td>
+                                      User LastName：
+   			   </td>
+               <td>
+                   <h:inputText id="it_lastName" class="ddl" value="#{loanManagedBean.userLastName}"></h:inputText>
+               </td>
+             <td>
+                                      User Email：
+   			   </td>
+               <td>
+                   <h:inputText id="it_email" class="ddl" value="#{loanManagedBean.userEmail}"></h:inputText>
+               </td>
+             </tr>
+             <tr>
+             <td>
+                                      User Phone：
+   			   </td>
+               <td>
+                   <h:inputText id="it_phone" class="ddl" value="#{loanManagedBean.userPhone}"></h:inputText>
+               </td>
+         
+             <td>
+                                      Book ISBN：
+   			   </td>
+               <td>
+                   <h:inputText id="it_isbn" class="ddl" value="#{loanManagedBean.bookIsbn}"></h:inputText>
+               </td>
+             <td>
+                                      Book CallNumber：
+   			   </td>
+               <td>
+                   <h:inputText id="it_callNumber" class="ddl" value="#{loanManagedBean.bookCallNumber}"></h:inputText>
+               </td>
+             <td>
+                                      Book Title：
+   			   </td>
+               <td>
+                   <h:inputText id="it_title" class="ddl" value="#{loanManagedBean.bookTitle}"></h:inputText>
+               </td>
+               <td colspan="4" align="center">
+                   <h:commandButton class="ttn" value="Search" action="#{loanManagedBean.searchByMultiCondition()}"></h:commandButton>
+		</td>
+        </tr> 
+    </tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+            </h:form>
+</c:if>
+<h:dataTable value="#{loanManagedBean.loans}" var="loan"
+   styleClass="grid"
+   headerClass="gridHead"
+   rowClasses="tdbg,tdbg-dark" style="text-align: center">
+   <h:column>
+      <f:facet name="header">ID</f:facet>
+      #{loan.id}
+   </h:column>
+   <h:column>
+      <f:facet name="header">UserName</f:facet>
+      #{loan.memberId.firstName} &nbsp; #{loan.memberId.lastName}
+   </h:column>
+   <h:column>
+      <f:facet name="header">StartDate</f:facet>
+      #{loan.startDate}
+   </h:column>
+   <h:column>
+      <f:facet name="header">DueDate</f:facet>
+      #{loan.dueDate}
+   </h:column>
+    <h:column>
+        <f:facet name="header">Book</f:facet>
+        #{loan.bookId.title}
+   </h:column>
+
+</h:dataTable>
+    </h:body>
+</html>
+

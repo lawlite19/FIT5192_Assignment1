@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>left</title>
+        <script type="text/javascript" src="script/jquery.min.js"></script>
+        <script type="text/javascript" src="script/jquery_treeview/jquery.treeview.js"></script>
+        <link type="text/css" rel="stylesheet" href="style/blue/menu.css" />
+
+    </h:head>
+    	
+    <h:body>
+        <c:if test='#{session.getAttribute("user").type=="Member"}'> 
+		<div id="Menu">
+			<ul id="MenuUl">		
+<!-- 显示一级菜单 -->
+					<li class="level1">
+						<div onClick="menuClick(this);" class="level1Style">
+							<img src="style/images/MenuIcon/1.gif" class="Icon" />
+							MemberUser
+						</div>
+						<ul style="" class="MenuLevel2" id="aa">
+<!-- 显示二级菜单 -->
+<!--书籍操作-->
+                                                    <h:form>
+								<li class="level2">
+									<div class="level2Style">
+										<img src="style/images/MenuIcon/menu_arrow_single.gif" />
+                                                                                
+                                                                                <h:commandLink target="right" action="#{bookManagedBean.list()}" value="Search Book"></h:commandLink>
+										
+									</div>
+								</li>
+                                                    </h:form>
+<!--书籍操作-->
+                                                    <h:form>
+								<li class="level2">
+									<div class="level2Style">
+										<img src="style/images/MenuIcon/menu_arrow_single.gif" />
+                                                                                
+                                                                                <h:commandLink target="right" action="#{loanManagedBean.list_myLoans()}" value="My Loan"></h:commandLink>
+										
+									</div>
+								</li>
+                                                    </h:form>
+						</ul> 
+					</li>
+			</ul>
+		</div>
+        </c:if>
+        <c:if test='#{session.getAttribute("user").type=="Librarian"}'>
+            <div id="Menu">
+			<ul id="MenuUl">		
+<!-- 显示一级菜单 -->
+					<li class="level1">
+						<div onClick="menuClick(this);" class="level1Style">
+							<img src="style/images/MenuIcon/2.gif" class="Icon" />
+							Librarian User
+						</div>
+						<ul style="" class="MenuLevel2" id="aa">
+<!-- 显示二级菜单 -->
+<!--Book管理-->
+                                                    <h:form>
+								<li class="level2">
+									<div class="level2Style">
+										<img src="style/images/MenuIcon/menu_arrow_single.gif" />
+                                                                                
+                                                                                <h:commandLink target="right" action="#{bookManagedBean.list()}" value="Book Management"></h:commandLink>
+										
+									</div>
+								</li>
+                                                    </h:form>
+<!--member管理-->
+                                                    <h:form>
+								<li class="level2">
+									<div class="level2Style">
+										<img src="style/images/MenuIcon/menu_arrow_single.gif" />
+                                                                                
+                                                                                <h:commandLink target="right" action="#{memberManagedBean.list_member()}" value="Member Management"></h:commandLink>
+										
+									</div>
+								</li>
+                                                    </h:form>
+<!--loan管理-->
+                                                    <h:form>
+								<li class="level2">
+									<div class="level2Style">
+										<img src="style/images/MenuIcon/menu_arrow_single.gif" />
+                                                                                
+                                                                                <h:commandLink target="right" action="#{loanManagedBean.list_loan()}" value="Loan Management"></h:commandLink>
+										
+									</div>
+								</li>
+                                                    </h:form>
+						</ul> 
+					</li>
+			</ul>
+		</div>
+        </c:if>
+    </h:body>
+</html>
+

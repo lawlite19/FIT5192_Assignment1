@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Book Detail</title>
+        <link href="script/skin/style.css" type="text/css" rel="Stylesheet" />
+        <script type="text/javascript" src="script/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script type="text/javascript" src="script/popup.js"></script>
+	<link rel="stylesheet" href="style/bootstrap.min.css"/>
+	<script type="text/javascript" src="script/bootstrap.min.js"></script>
+    </h:head>
+    <h:body style="padding-top: 50px">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2"></div>
+                        
+			<div class="col-sm-8">
+                            <h:form class="form-horizontal">
+                                
+                                    <div class="form-group" style="text-align: center">
+                                            <h2>Book Information</h2>
+					</div>
+					<div class="form-group">
+						<label for="it_firstName" class="col-sm-2 control-label">ISBN</label>
+						<div class="col-sm-9" id="firstName">
+                                                    <h:outputLabel value='#{bookManagedBean.book.isbn}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="it_lastName" class="col-sm-2 control-label">Call Number</label>
+						<div class="col-sm-9">
+
+                                                    <h:outputLabel value='#{bookManagedBean.book.callNumber}' class="form-control"></h:outputLabel>
+						</div>
+
+					</div>
+                                        <div class="form-group">
+						<label for="it_email" class="col-sm-2 control-label">Title</label>
+						<div class="col-sm-9">
+                                                   
+                                                    <h:outputLabel value='#{bookManagedBean.book.title}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="password" class="col-sm-2 control-label">Author</label>
+						<div class="col-sm-9">
+                                                    
+                                                    <h:outputLabel value='#{bookManagedBean.book.author}'    class="form-control"></h:outputLabel>
+						
+                                                </div>
+					</div>
+
+					<div class="form-group">
+						<label for="inlineRadio1" class="col-sm-2 control-label">Publisher</label>
+						<div class="col-sm-9">
+                                                    
+                                                    <h:outputLabel value='#{bookManagedBean.book.publisher}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+					  <div class="form-group">
+						<label for="phone" class="col-sm-2 control-label">Type</label>
+						<div class="col-sm-9">
+                                                    <h:outputLabel value='#{bookManagedBean.book.type}' class="form-control"></h:outputLabel>
+                                                    
+						</div>
+					</div>
+                                         <div class="form-group">
+						<label for="it_userType" class="col-sm-2 control-label">Thumbnail</label>
+						<div class="col-sm-9">
+                                                    <h:graphicImage value="#{bookManagedBean.book.thumbnail}"></h:graphicImage>
+                                                </div>
+					</div>
+					<div class="form-group">
+						<label for="it_userType" class="col-sm-2 control-label">Preview URL</label>
+						<div class="col-sm-9">
+                                                    
+                                                    <h:outputLabel value='#{bookManagedBean.book.previewUrl}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+                                        <div class="form-group">
+						<label for="it_userType" class="col-sm-2 control-label">Description</label>
+						<div class="col-sm-9">
+                                                    <h:outputLabel value='#{bookManagedBean.book.description}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+                                
+				</h:form>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+	</div>
+        
+    </h:body>
+</html>
+

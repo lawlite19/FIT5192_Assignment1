@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+        <link href="style/blue/login.css" type="text/css" rel="stylesheet"></link>
+        <script type="text/javascript" src="script/jquery.min.js"></script>
+<!--        <script type="text/javascript" src="script/pageCommon.js" charset="utf-8"></script>
+        <script type="text/javascript" src="script/PageUtils.js" charset="utf-8"></script>
+        <link type="text/css" rel="stylesheet" href="style/blue/pageCommon.css" />-->
+        <script type="text/javascript">
+		
+		// 在被嵌套时就刷新上级窗口
+		if(window.parent != window){
+			window.parent.location.reload(true);
+		}
+	</script>
+    </h:head>
+    <h:body>
+        <h:form>
+      <div id="CenterAreaBg"> 
+        <div id="CenterArea">
+            <div id="LogoImg" style="color: #C0D6FF; font-size: 20px">Library Catalogue System</div>
+            <div id="LoginInfo">
+                <table border="0" cellspacing="0"  CELLPADDING="0" width="120%">
+                	<tr>
+                		<td colspan="3"><!-- 显示错误 -->
+                                    <font color="red">
+                                        <h:outputLabel value="#{userManagedBean.message}"></h:outputLabel>
+                                    </font>
+                		</td>
+                	</tr>
+                    <tr>
+                        <td width="45" class="Subject">Email</td>
+                        <td>
+                        	<h:inputText id="it_email" value="#{userManagedBean.email}">
+                            
+                        </h:inputText>
+                        </td>
+                        <td rowspan="2" style="padding-left:10px;">
+                            <h:commandButton type="submit" action="#{userManagedBean.login()}" value="Login" style="height: 50px; width: 100px;font-size: 20px">
+                        	
+                            </h:commandButton>
+                                                       
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Subject">Password</td>
+                        <td>
+                            <h:inputSecret id="it_password" value="#{userManagedBean.password}">
+                            </h:inputSecret>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="Subject">
+                            UserType
+                        </td>
+                        <td>
+                            <h:selectOneRadio id="userType" required="true" requiredMessage="Must select UserType!" value="#{userManagedBean.userType}" style="font-size:14px;color: #C0D6FF">
+                            <f:selectItem itemValue="Librarian" itemLabel="Librarian" />
+                            <f:selectItem itemValue="Member" itemLabel="Member" />                   
+                            </h:selectOneRadio>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="Subject">
+                            
+                        </td>
+                        <td>
+                            
+                            </td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="CopyRight">
+                <h:commandLink value="Register" action="#{registerManagedBean.registerUI()}"></h:commandLink>
+            <br/>
+            <br/>
+                <a href="javascript:void(0)">&copy; 2017 Copyright Monash</a>
+            </div>
+        </div>
+    </div>
+            
+           
+        </h:form>
+    </h:body>
+</html>
+

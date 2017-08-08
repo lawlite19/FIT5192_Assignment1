@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>User Detail</title>
+        <link href="script/skin/style.css" type="text/css" rel="Stylesheet" />
+        <script type="text/javascript" src="script/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script type="text/javascript" src="script/popup.js"></script>
+	<link rel="stylesheet" href="style/bootstrap.min.css"/>
+	<script type="text/javascript" src="script/bootstrap.min.js"></script>
+                <link rel="stylesheet" type="text/css" href="style/c.css" />
+        <link rel="stylesheet" type="text/css" href="style/baseSE.css" />
+    </h:head>
+    <h:body style="padding-top: 50px">
+        
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2"></div>
+                        
+			<div class="col-sm-8">
+                            <h:form class="form-horizontal">
+                                    <div class="form-group" style="text-align: center">
+                                            <h2>User Information</h2>
+					</div>
+					<div class="form-group">
+						<label for="it_firstName" class="col-sm-2 control-label">User ID</label>
+						<div class="col-sm-9" id="firstName">
+                                                    <h:outputLabel value='#{memberManagedBean.user.id}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="it_lastName" class="col-sm-2 control-label">First Name</label>
+						<div class="col-sm-9">
+
+                                                    <h:outputLabel value='#{memberManagedBean.user.firstName}' class="form-control"></h:outputLabel>
+						</div>
+
+					</div>
+                                        <div class="form-group">
+						<label for="it_email" class="col-sm-2 control-label">LastName</label>
+						<div class="col-sm-9">
+                                                   
+                                                    <h:outputLabel value='#{memberManagedBean.user.lastName}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="password" class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-9">
+                                                    
+                                                    <h:outputLabel value='#{memberManagedBean.user.email}'    class="form-control"></h:outputLabel>
+						
+                                                </div>
+					</div>
+
+					<div class="form-group">
+						<label for="inlineRadio1" class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-9">
+                                                    
+                                                    <h:outputLabel value='#{memberManagedBean.user.password}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+					  <div class="form-group">
+						<label for="phone" class="col-sm-2 control-label">Type</label>
+						<div class="col-sm-9">
+                                                    <h:outputLabel value='#{memberManagedBean.user.type}' class="form-control"></h:outputLabel>
+                                                    
+						</div>
+					</div>
+                                         <div class="form-group">
+						<label for="it_userType" class="col-sm-2 control-label">Address</label>
+						<div class="col-sm-9">
+                                                    <h:outputLabel value='#{memberManagedBean.user.address}' class="form-control"></h:outputLabel>
+                                                    
+                                                </div>
+					</div>
+					<div class="form-group">
+						<label for="it_userType" class="col-sm-2 control-label">Phone Number</label>
+						<div class="col-sm-9">
+                                                    
+                                                    <h:outputLabel value='#{memberManagedBean.user.phoneNumber}' class="form-control"></h:outputLabel>
+						</div>
+					</div>
+                               
+				</h:form>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+	</div>
+        <div style="margin:10px 10px 10px 50px; padding: 10px;">
+<h:dataTable value="#{memberManagedBean.loans}" var="loan"
+   styleClass="grid"
+   headerClass="gridHead"
+   rowClasses="tdbg,tdbg-dark" style="text-align: center">
+   <h:column>
+      <f:facet name="header">ID</f:facet>
+      #{loan.id}
+   </h:column>
+   <h:column>
+      <f:facet name="header">User ID</f:facet>
+      #{loan.memberId.firstName}
+   </h:column>
+   <h:column>
+      <f:facet name="header">Start Date</f:facet>
+      #{loan.startDate}
+   </h:column>
+   <h:column>
+      <f:facet name="header">Due Date</f:facet>
+      #{loan.dueDate}
+   </h:column>
+    <h:column>
+        <f:facet name="header">Book</f:facet>
+        #{loan.bookId.title}
+   </h:column>
+    <h:column>
+      <f:facet name="header">Operation</f:facet>
+      <h:form>
+          <h:commandLink action="#{memberManagedBean.detailUI()}" value="detail">
+              <f:param name="user_id" value="#{user.id}"></f:param> 
+        </h:commandLink>
+      </h:form>
+      |
+      <h:form>
+          <h:commandLink action="#{memberManagedBean.delete()}" value="detail">
+              <f:param name="user_id" value="#{user.id}"></f:param> 
+        </h:commandLink>
+      </h:form>
+   </h:column>
+</h:dataTable>
+            </div>
+    </h:body>
+</html>
+

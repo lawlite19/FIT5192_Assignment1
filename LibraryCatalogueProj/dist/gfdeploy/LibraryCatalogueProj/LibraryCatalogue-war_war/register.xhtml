@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Register</title>
+        <link href="script/skin/style.css" type="text/css" rel="Stylesheet" />
+        <script type="text/javascript" src="script/jquery.min.js"></script>
+	<!-- Bootstrap -->
+	<script type="text/javascript" src="script/popup.js"></script>
+	<link rel="stylesheet" href="style/bootstrap.min.css"/>
+	<script type="text/javascript" src="script/bootstrap.min.js"></script>
+        <script type="text/javascript">
+                function check(){
+                    var p1 = document.getElementById("j_idt6:is_password").value; 
+                    var p2 = document.getElementById("j_idt6:is_confirmPassword").value; 
+                    if (p1 != p2) {
+                        $("#span_confirmPassword").html("error").css("color", "red").css('display', '');
+		        return false;
+		    }
+                    return true;
+                }
+	</script>
+    </h:head>
+    <h:body style="padding-top: 90px">
+        
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-2"></div>
+                        
+			<div class="col-sm-8">
+                            <h:form class="form-horizontal" onsubmit="return check()">
+                                    <div class="form-group" style="text-align: center">
+                                            <h2>Register</h2>
+					</div>
+					<div class="form-group">
+						<label for="it_firstName" class="col-sm-2 control-label">FirstName</label>
+						<div class="col-sm-9" id="firstName">
+                                                    <h:inputText id="it_firstName" validatorMessage="FistName cannot contain numeric value" class="form-control" value="#{userManagedBean.user.firstName}" required="true" requiredMessage="Must input FirstName">
+                                                        <f:validateRegex for="it_firstName" pattern="[^\d]+"></f:validateRegex>
+                                                    </h:inputText>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="it_lastName" class="col-sm-2 control-label">LastName</label>
+						<div class="col-sm-9">
+                                                    <h:inputText validatorMessage="LastName cannot contain numeric value"  id="it_lastName" class="form-control" value="#{userManagedBean.user.lastName}" required="true" requiredMessage="Must input LastName">
+                                                        <f:validateRegex for="it_lastName" pattern="[^\d]+"></f:validateRegex>
+                                                    </h:inputText>
+						</div>
+
+					</div>
+                                        <div class="form-group">
+						<label for="it_email" class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-9">
+                                                    <h:inputText id="it_email" validatorMessage="Email format not correct" class="form-control" value="#{userManagedBean.user.email}" required="true" requiredMessage="Must input Emial">
+                                                        <f:validateRegex for="it_email" pattern="^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$"></f:validateRegex>
+                                                    </h:inputText>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="password" class="col-sm-2 control-label">Password</label>
+						<div class="col-sm-9">
+                                                    <h:inputSecret id="is_password" class="form-control" value="#{userManagedBean.user.password}" required="true" requiredMessage="Must input Password"></h:inputSecret>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="confirmPassword" class="col-sm-2 control-label">Confirm Pwd</label>
+						<div class="col-sm-9">
+                                                    <h:inputSecret id="is_confirmPassword" class="form-control"  required="true" requiredMessage="Must Input Confirm Password"></h:inputSecret>
+						</div>
+         
+                                                <span id="span_confirmPassword"></span>
+					</div>
+					<div class="form-group">
+						<label for="inlineRadio1" class="col-sm-2 control-label">Address</label>
+						<div class="col-sm-9">
+                                                    <h:inputText  class="form-control" value="#{userManagedBean.user.address}" required="true" requiredMessage="Must input Address"></h:inputText>
+						</div>
+					</div>
+					  <div class="form-group">
+						<label for="phone" class="col-sm-2 control-label">Phone</label>
+						<div class="col-sm-9">
+                                                    <h:inputText id="it_phone" validatorMessage="Phone number format not correct" class="form-control" value="#{userManagedBean.user.phoneNumber}" required="true" requiredMessage="Must input Phone Number">
+                                                        <f:validateRegex for="it_phone" pattern="^[9][0-9]{7}$|^[0][0-9]{9}$"></f:validateRegex>
+                                                    </h:inputText>
+						</div>
+					</div>
+                                         <div class="form-group">
+						<label for="it_userType" class="col-sm-2 control-label">UserType</label>
+						<div class="col-sm-9">
+                                                    <h:selectOneRadio id="it_userType" required="true" requiredMessage="Must select UserType" value="#{userManagedBean.user.type}">
+                                                    <f:selectItem itemValue="Librarian" itemLabel="Librarian" />
+                                                    <f:selectItem itemValue="Member" itemLabel="Member" />                   
+                                                    </h:selectOneRadio>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+                                                    <h:commandButton class="btn btn-success btn-lg" id="sub" value="Register" action="#{userManagedBean.register()}"></h:commandButton>
+						</div>
+					</div>
+                                
+				</h:form>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
+	</div>
+    </h:body>
+</html>
+

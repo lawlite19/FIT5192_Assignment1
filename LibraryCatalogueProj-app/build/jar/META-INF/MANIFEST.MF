@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.4
+Created-By: 1.8.0_121-b13 (Oracle Corporation)
+X-COMMENT: Main-Class will be added automatically by build
+Class-Path: AbsoluteLayout.jar lib/AbsoluteLayout.jar javax.annotation
+ .jar jaxb-api-osgi.jar webservices-api-osgi.jar lib/javax.annotation.
+ jar jaxb-api-osgi.jar webservices-api-osgi.jar LibraryCatalogueProj-s
+ hared.jar lib/LibraryCatalogueProj-shared.jar commons-codec.jar lib/c
+ ommons-codec.jar 
+Main-Class: com.monash.LibraryCatalogue
+
