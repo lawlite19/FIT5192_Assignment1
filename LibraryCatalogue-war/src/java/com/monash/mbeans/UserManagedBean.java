@@ -78,8 +78,10 @@ public class UserManagedBean implements Serializable{
         user.setPassword(DigestUtils.md5Hex(user.getPassword()));  // md5 encode
         String result = userServiceRemote.addUser(user);
         if (result.equals("success")){
+            message = "register success, please login!";
             return "login";
         }
+        message = "register failed, please try again!";
         return "register";
     }
     /**
