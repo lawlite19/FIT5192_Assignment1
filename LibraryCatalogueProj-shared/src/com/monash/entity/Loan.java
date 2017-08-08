@@ -98,7 +98,7 @@ public class Loan implements Serializable {
 //        this.bookIds = bookIds;
 //    }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.EAGER)
     @NotNull
     public Book getBookId() {
         return bookId;

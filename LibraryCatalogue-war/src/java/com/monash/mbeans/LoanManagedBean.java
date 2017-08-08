@@ -59,8 +59,8 @@ public class LoanManagedBean implements Serializable{
         loans = loanServiceRemote.findMyLoans(user.getId());
         return "loan_list";
     }
-    /**
-     * member borrow a book
+    /** 
+     * member borrow a book 
      * @return
      * @throws Exception 
      */
