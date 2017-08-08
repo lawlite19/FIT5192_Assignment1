@@ -10,4 +10,8 @@
 - `id_28198972.sql`file can be used to create database and tables
   - database name: `id_28198972`
   - userName: `fit5192`
-  - password: `fit5192`
+  - password: `fit5192
+- I put it on the Github: [Click to view][1]`
+
+
+  [1]: https://github.com/lawlite19/FIT5192_Assignment1
